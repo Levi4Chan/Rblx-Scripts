@@ -189,6 +189,6 @@ end)
 
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
     if State == Enum.TeleportState.Started then
-        syn.queue_on_teleport("loadstring(game:HttpGet("https://rawscripts.net/raw/Anime-Story-RELEASE!-WIP-5769"))()")
+        syn.queue_on_teleport("https://raw.githubusercontent.com/Levi4Chan/Rblx-Scripts/main/AnimeStory.lua"))()")
     end
 end)
