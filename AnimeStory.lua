@@ -17,6 +17,7 @@ local Page1 = UI.New({
 
 getgenv().Settings = {
     AutoMine = false,
+    OreEsp = false,
     LootEsp = false
 }
 
@@ -28,9 +29,16 @@ Page1.Toggle({
 })
 
 Page1.Toggle({
+    Text = "Ore Esp",
+    Callback = function(OE)
+        Settings.OreEsp = OE
+    end
+})
+
+Page1.Toggle({
     Text = "Loot Esp",
-    Callback = function(AM)
-        Settings.LootEsp = AM
+    Callback = function(LE)
+        Settings.LootEsp = LE
     end
 })
 
@@ -174,6 +182,17 @@ task.spawn(function()
                     end
                 end
             end)
+        end
+        if Settings.OreEsp then
+            pcall(function()
+                ClearESP("Ore_Tracker")
+                for i,v in ipairs(game:GetService("Workspace").Interactable.Ores:GetChildren()) do
+                    local studs = Player:DistanceFromCharacter(v.Rock.Position)
+                    Simple_Create(v.Rock, v.Name, "Ore_Tracker", math.floor(studs + 0.5))
+                end
+            end)
+        else
+            ClearESP("Ore_Tracker")
         end
         if Settings.LootEsp then
             pcall(function()
