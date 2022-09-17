@@ -460,7 +460,8 @@ task.spawn(function()
 end)
 
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-    if State == Enum.TeleportState.InProgress then
+    if State == Enum.TeleportState.Started then
+	repeat task.wait() until State == Enum.TeleportState.InProgress
         syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/Levi4Chan/Rblx-Scripts/main/AnimeStory.lua"))())
     end
 end)
