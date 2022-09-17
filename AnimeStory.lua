@@ -1,4 +1,7 @@
 repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game:GetService("Players")
+repeat task.wait() until game:GetService("Players").LocalPlayer
+repeat task.wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -456,8 +459,8 @@ task.spawn(function()
     end
 end)
 
---game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-    --if State == Enum.TeleportState.Started then
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+    if State == Enum.TeleportState.InProgress then
         syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/Levi4Chan/Rblx-Scripts/main/AnimeStory.lua"))())
-    --end
---end)
+    end
+end)
