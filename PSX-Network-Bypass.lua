@@ -2,6 +2,12 @@
 Credits to: Rafa#0069
 ]]
 
+if (getgenv().AlreadyRan) then
+    return
+end
+
+getgenv().AlreadyRan = true
+
 local Library = require(game:GetService("ReplicatedStorage").Library)
 while not Library.Loaded do task.wait() end
 
