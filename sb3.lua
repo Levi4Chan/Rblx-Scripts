@@ -285,7 +285,7 @@ task.spawn(function()
         if swordburst["automobs"] and choosemob then
             local enemy = getclosestmobs(choosemob)
             if getchar() and getchar():FindFirstChild("HumanoidRootPart") and enemy and enemy:FindFirstChild("HumanoidRootPart") then
-                getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -15, 25)
+                getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -25, 25)
             end
         end 
     end
