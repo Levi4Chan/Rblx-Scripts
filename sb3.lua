@@ -301,7 +301,7 @@ task.spawn(function()
                 else
                     for i,v in next, workspace.BossArenas:GetChildren() do
                         if string.find(v.Name, boss) then
-                            getchar().HumanoidRootPart.CFrame = v:FindFirstChild("Spawn").CFrame 
+                            getchar().HumanoidRootPart.CFrame = v:FindFirstChild("Spawn").CFrame * CFrame.new(0, -45, 0)
                         end
                     end
                 end
