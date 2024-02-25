@@ -297,11 +297,11 @@ task.spawn(function()
             if getchar() and getchar():FindFirstChild("HumanoidRootPart") and boss then
                 local enemy = getclosestmobs(boss)
                 if enemy and enemy:FindFirstChild("HumanoidRootPart") then
-                    getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -45, 25)
+                    getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -40, 25)
                 else
                     for i,v in next, workspace.BossArenas:GetChildren() do
                         if string.find(v.Name, boss) then
-                            getchar().HumanoidRootPart.CFrame = v:FindFirstChild("Spawn").CFrame * CFrame.new(0, -45, 0)
+                            getchar().HumanoidRootPart.CFrame = v:FindFirstChild("Spawn").CFrame
                         end
                     end
                 end
