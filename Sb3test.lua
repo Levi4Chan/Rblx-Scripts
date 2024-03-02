@@ -27,6 +27,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local lplr = Players.LocalPlayer
 
 local Stamina = require(game:GetService("ReplicatedStorage").Systems.Stamina)
+local ItemList = require(ReplicatedStorage.Systems.Items.ItemList)
 
 local mobs = {}
 local mines = {}
