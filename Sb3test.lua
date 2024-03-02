@@ -210,8 +210,12 @@ teleporttab:Button{
     Name = "Teleport Waystones",
     Description = nil,
     Callback = function()
-        if waystones then
-            getchar().HumanoidRootPart.CFrame = waystones.Main.CFrame * CFrame.new(0,0,5)
+        if waystones and getchar() and getchar():FindFirstChild("HumanoidRootPart") then
+            for i,v in next, workspace.Waystones:GetChildren() do
+                if v.Name == waystones then
+                    getchar().HumanoidRootPart.CFrame = v.Main.CFrame * CFrame.new(0,0,5)
+                end
+            end
         end
     end
 }
