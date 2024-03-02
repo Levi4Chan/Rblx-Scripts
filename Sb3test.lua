@@ -118,9 +118,10 @@ tab:Dropdown{
 tab:TextBox{
 	Name = "Farm Distance",
 	Description = "Max is only 50",
-	Callback = function (Value)
+	Callback = function(Value)
 		dist = tonumber(Value)
 	end
+}
 
 --[[tab:Slider{
 	Name = "Auto Farm Distance",
