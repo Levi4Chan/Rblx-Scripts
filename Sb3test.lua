@@ -35,6 +35,7 @@ local bosses = {}
 local quests = {}
 local waystone = {}
 local swordburst = {}
+local methods = {"above", "below", "behind"}
 local category = {"Material", "Mount", "Cosmetic", "Pickaxe"}
 local raritys = {"common (white)", "uncommon (green) and below", "rare (blue) and below", "epic (purple) and below", "legendary (orange) and below"}
 local realrarity = {["common (white)"] = 1, ["uncommon (green) and below"] = 2, ["rare (blue) and below"] = 3, ["epic (purple) and below"] = 4, ["legendary (orange) and below"] = 5,}
@@ -97,6 +98,16 @@ tab:Dropdown{
     Callback = function(item)
         choosemob = item
     end
+}
+
+tab:Slider{
+	Name = "Auto Farm Distance",
+	Default = 25,
+	Min = 1,
+	Max = 50,
+	Callback = function(Value) 
+		dist = Value
+	end
 }
 
 tab:Toggle{
@@ -265,6 +276,18 @@ GUI:Credit{
     Discord = "https://discord.gg/b9QX5rnkT5"
 }
 
+local function methodss()
+    if method and dist then
+        if method == "above" then
+            return CFrame.new(0, dist, 0)
+        elseif method == "below" then
+            return CFrame.new(0, -dist,0)
+        elseif method == "behind" then
+            return CFrame.new(0,0, dist)
+        end
+    end
+end
+
 local function getclosestmobs(mob)
     local distance = math.huge
     local target
@@ -326,10 +349,10 @@ end
 
 task.spawn(function()
     while task.wait() do
-        if swordburst["automobs"] and choosemob then
+        if swordburst["automobs"] and choosemob or swordburst["mobs"] and choosemob then
             local enemy = getclosestmobs(choosemob)
             if getchar() and getchar():FindFirstChild("HumanoidRootPart") and enemy and enemy:FindFirstChild("HumanoidRootPart") then
-                getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -25, 0)
+                getchar().HumanoidRootPart.CFrame = enemy:FindFirstChild("HumanoidRootPart").CFrame * methodss()
             end
         end 
     end
