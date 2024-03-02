@@ -41,6 +41,7 @@ local realrarity = {["common (white)"] = 1, ["uncommon (green) and below"] = 2, 
 
 local mine
 local boss
+local rarity
 local insert
 local waystones
 local choosemob
