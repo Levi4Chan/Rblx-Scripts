@@ -44,6 +44,7 @@ local mine
 local boss
 local rarity
 local insert
+local method
 local waystones
 local choosemob
 local choosequest
