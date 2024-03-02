@@ -100,6 +100,16 @@ tab:Dropdown{
     end
 }
 
+tab:Dropdown{
+    Name = "Farm Method",
+    StartingText = "Select...",
+    Description = nil,
+    Items = methods,
+    Callback = function(item)
+        method = item
+    end
+}
+
 tab:Slider{
 	Name = "Auto Farm Distance",
 	Default = 25,
