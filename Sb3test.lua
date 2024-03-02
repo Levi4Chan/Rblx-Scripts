@@ -40,6 +40,10 @@ local category = {"Material", "Mount", "Cosmetic", "Pickaxe"}
 local raritys = {"common (white)", "uncommon (green) and below", "rare (blue) and below", "epic (purple) and below", "legendary (orange) and below"}
 local realrarity = {["common (white)"] = 1, ["uncommon (green) and below"] = 2, ["rare (blue) and below"] = 3, ["epic (purple) and below"] = 4, ["legendary (orange) and below"] = 5,}
 
+local cd
+local range
+local dist
+
 local mine
 local boss
 local rarity
