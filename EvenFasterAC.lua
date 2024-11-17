@@ -27,6 +27,7 @@ Enabled_1 = Window:AddColor({
     flag = "Levia4Chan",
     color = Color3.new(1, 0, 0),
     callback = function(A_1)
+        -- "Enabled" Color
         local NewColor = Color3.new(0, 1, 0)
         if Enabled == false then
             NewColor = Color3.new(1, 0, 0)
@@ -40,17 +41,22 @@ Enabled_1 = Window:AddColor({
 Window:AddBind({
     text = 'Toggle',
     callback = function()
-        getgenv().Enabled = false
+        -- Toggle
+        Enabled = not Enabled
+        -- "Enabled" Color
         local NewColor = Color3.new(0, 1, 0)
-        if getgenv().Enabled == false then
+        if Enabled == false then
             NewColor = Color3.new(1, 0, 0)
         end
         if NewColor ~= Last then
             Last = NewColor
             Enabled_1:SetColor(NewColor)
         end
-        if getgenv().Enabled then
+        -- Click Position
+        if Enabled then
+            -- Update Mouse Pos
             X, Y = Mouse.X, Mouse.Y + 10
+            -- Update Box
             Box_1:SetValue()
         else
             X, Y = 0, 0
@@ -72,9 +78,9 @@ Library:Init()
 
 game:GetService("RunService").Heartbeat:Connect(function()
 	local VU = game:GetService("VirtualUser")
-	while getgenv().Enabled do
-        	VU:CaptureController()
-        	VU:ClickButton1(Vector2.new())
-        	task.wait()
-    	end
+	while Enabled do
+                VU:CaptureController()
+                VU:ClickButton1(Vector2.new())
+                task.wait()
+        end
 end)
