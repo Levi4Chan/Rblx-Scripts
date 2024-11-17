@@ -40,16 +40,16 @@ Enabled_1 = Window:AddColor({
 Window:AddBind({
     text = 'Toggle',
     callback = function()
-        Enabled = not Enabled
+        getgenv().Enabled = false
         local NewColor = Color3.new(0, 1, 0)
-        if Enabled == false then
+        if getgenv().Enabled == false then
             NewColor = Color3.new(1, 0, 0)
         end
         if NewColor ~= Last then
             Last = NewColor
             Enabled_1:SetColor(NewColor)
         end
-        if Enabled then
+        if getgenv().Enabled then
             X, Y = Mouse.X, Mouse.Y + 10
             Box_1:SetValue()
         else
@@ -70,11 +70,11 @@ Box_1 = Window:AddBox({
 })
 Library:Init()
 
-ame:GetService("RunService").Heartbeat:Connect(function()
-  local VU = game:GetService("VirtualUser")
-	while Enabled do
-        VU:CaptureController()
-        VU:ClickButton1(Vector2.new())
-        task.wait()
-    end
+game:GetService("RunService").Heartbeat:Connect(function()
+	local VU = game:GetService("VirtualUser")
+	while getgenv().Enabled do
+        	VU:CaptureController()
+        	VU:ClickButton1(Vector2.new())
+        	task.wait()
+    	end
 end)
