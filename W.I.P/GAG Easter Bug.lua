@@ -48,6 +48,9 @@ candyButton.MouseButton1Click:Connect(function()
                 BuyEvent:FireServer("Easter Egg")
                 BuyEvent:FireServer("Chocolate Sprinkler")
                 BuyEvent:FireServer("Candy Blossom")
+                BuyEvent:FireServer("Red Lollipop")
+                BuyEvent:FireServer("Candy Sunflower")
+                BuyEvent:FireServer("Chocolate Carrot")
                 BuyEvent:FireServer("Night Seed Pack")
                 counter += 1
                 if counter >= 1000000 then
