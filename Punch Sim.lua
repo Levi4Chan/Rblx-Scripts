@@ -1,19 +1,22 @@
-local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/Levi4Chan/Lib/refs/heads/main/Mercury%20Lib/source.lua"))()
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+
+local button = game:GetService("Players").LocalPlayer.PlayerGui.DungeonFinishUI.Frame.ClaimButton
+local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
 
 local GUI = Mercury:Create{
     Name = "Mercury",
     Size = UDim2.fromOffset(600, 400),
-    Theme = self.Themes.Dark,
-    Link = "https://github.com/Levi4Chan"
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/deeeity/mercury-lib"
 }
 
 local Tab = GUI:Tab{
-	Name = "Main",
+	Name = "New Tab",
 	Icon = "rbxassetid://8569322835"
 }
 
 Tab:Button{
-	Name = "Punch Sim (Tora)",
+	Name = "Button",
 	Description = nil,
 	Callback = function() 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/PlayerHubOther/main/PlayerHubPunchingSimulator.lua", true))()
@@ -21,22 +24,29 @@ Tab:Button{
 }
 
 Tab:Textbox{
-    Name = "Wave to Stop",
-	Placeholder = "Type something..",
-	Description = nil,
-	Callback = function(t) 
-        getgenv().DunPlace = t
+	Name = "Wave to Stop",
+	Callback = function(text) 
+        getgenv().DunPlace = text
     end
 }
 
 Tab:Toggle{
-	Name = "Auto Start Dungeon",
+	Name = "Toggle",
 	StartingState = false,
 	Description = nil,
 	Callback = function(state) 
         getgenv().DungeonTog = state
-		if getgenv().DungeonTog then game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DungeonEvent"):FireServer("StartDungeon")
+		if getgenv().DungeonTog then 
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DungeonEvent"):FireServer("StartDungeon")
+        end
     end
+}
+
+GUI:Credit{
+	Name = "Creditor's name",
+	Description = "Helped with the script",
+	V3rm = "link/name",
+	Discord = "helo#1234"
 }
 
 task.spawn(function()
@@ -54,66 +64,10 @@ task.spawn(function()
                     end
                 end
                 task.wait(8)
-		if getgenv().DungeonTog then
+		        if getgenv().DungeonTog then
                 	game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DungeonEvent"):FireServer("StartDungeon")
-		end
+		        end
             end
         end
     end
 end)
-
---[[Tab:Dropdown{
-	Name = "Dropdown",
-	StartingText = "Select...",
-	Description = nil,
-	Items = {},
-	Callback = function(item) return end
-}
-
-Tab:Slider{
-	Name = "Slider",
-	Default = 50,
-	Min = 0,
-	Max = 100,
-	Callback = function() end
-}
-
-Tab:Keybind{
-	Name = "Keybind",
-	Keybind = nil,
-	Description = nil
-}
-
-GUI:Prompt{
-	Followup = false,
-	Title = "Prompt",
-	Text = "Prompts are cool",
-	Buttons = {
-		ok = function()
-			return true
-		end
-		no = function()
-			return false
-		end
-	}
-}
-
-GUI:Notification{
-	Title = "Alert",
-	Text = "You shall bump the thread on V3rmillion!",
-	Duration = 3,
-	Callback = function() end
-}
-
-GUI:ColorPicker{
-	Style = Library.ColorPickerStyles.Legacy,
-	Callback = function(color) end
-}
-
-GUI:Credit{
-	Name = "Creditor's name",
-	Description = "Helped with the script",
-	V3rm = "link/name",
-	Discord = "helo#1234"
-}
-]]
