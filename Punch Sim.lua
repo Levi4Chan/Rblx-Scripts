@@ -1,4 +1,4 @@
-local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/Levi4Chan/Lib/refs/heads/main/Mercury%20Lib/source.lua"))()
 
 local button = game:GetService("Players").LocalPlayer.PlayerGui.DungeonFinishUI.Frame.ClaimButton
 local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
