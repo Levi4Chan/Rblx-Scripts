@@ -42,12 +42,32 @@ Tab:Toggle{
     end
 }
 
+Tab:Toggle{
+	Name = "Auto Hack",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+        getgenv().AutoHack = state
+    end
+}
+
+
 GUI:Credit{
 	Name = "Creditor's name",
 	Description = "Helped with the script",
 	V3rm = "link/name",
 	Discord = "helo#1234"
 }
+
+task.spawn(function()
+    while task.wait() do
+        if getgenv().AutoHack then
+            if game:GetService("Players").LocalPlayer.PlayerGui.Hacker.Frame.HackButton.Visible == true then
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HackEvent"):InvokeServer("Begin")
+            end
+        end
+    end
+end)
 
 task.spawn(function()
     while task.wait() do
